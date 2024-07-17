@@ -2,6 +2,9 @@
     margin: 0 auto;
   }
 
-td {
-    border: 1px solid black;
+table, tr, td {
+    border-collapse: collapse;
+    border: 1px solid;
 }
+
+

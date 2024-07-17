@@ -27,12 +27,12 @@ import "./Board.css";
  *
  **/
 
-function Board({ nrows=5, ncols=5, chanceLightStartsOn }) {
+function Board({ nrows, ncols, chanceLightStartsOn }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
   function createBoard() {
-    let initialBoard = [];
+    let initialBoard = [[true, true, true], [false, false, false], [true, false, true]];
     // TODO: create array-of-arrays of true/false values
     return initialBoard;
   }
@@ -68,6 +68,21 @@ function Board({ nrows=5, ncols=5, chanceLightStartsOn }) {
   // make table board
 
   // TODO
+
+  return (
+    <>
+        <table>
+            {board.map(row => (
+                <tr>
+                    {row.map(val => (
+                        <td><Cell isLit={val} /></td>
+                        
+                    ))}
+                </tr>
+            ))}
+        </table>
+    </>
+  )
 }
 
 export default Board;

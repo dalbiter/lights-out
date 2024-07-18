@@ -26,14 +26,23 @@ import "./Board.css";
  *  This doesn't handle any clicks --- clicks are on individual cells
  *
  **/
+const random = () => Math.random();
 
 function Board({ nrows, ncols, chanceLightStartsOn }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
   function createBoard() {
-    let initialBoard = [[true, false, true], [false, false, false], [true, false, true]];
-    // TODO: create array-of-arrays of true/false values
+    let initialBoard = [];
+    for(let i=0; i<nrows; i++) {
+        let row = []
+        for(let j=0; j<ncols; j++) {
+            let lit = random() < chanceLightStartsOn ? true : false
+            row.push(lit) 
+        };
+        initialBoard.push(row)      
+    };
+    
     return initialBoard;
   }
 
@@ -75,9 +84,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
             {board.map((row, y) => (
                 <tr>
                     {row.map((val, x) => (
-                        <td>
-                            <Cell isLit={val} coord={[y,x]}/>
-                        </td>    
+                        <Cell isLit={val} coord={[y,x]}/>  
                     ))}
                 </tr>
             ))}

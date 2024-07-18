@@ -81,6 +81,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   return (
     <div className="Board">
         <table>
+            <tbody>
             {board.map((row, y) => (
                 <tr>
                     {row.map((val, x) => (
@@ -88,6 +89,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
                     ))}
                 </tr>
             ))}
+            </tbody>
         </table>
     </div>
   )

@@ -30,6 +30,7 @@ const random = () => Math.random();
 
 function Board({ nrows, ncols, chanceLightStartsOn }) {
   const [board, setBoard] = useState(createBoard());
+  const [count, setCount] = useState(0)
 
   function createBoard() {
     let initialBoard = [];
@@ -75,6 +76,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       // TODO: return the copy
       return boardCopy;
     });
+    setCount(count + 1)
   }
 
   // if the game is won, just show a winning msg & render nothing else
@@ -99,7 +101,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
     }
     tableBoard.push(<tr key={y}>{row}</tr>)
   }
-
+  console.log(tableBoard)
   // TODO
 
   return (
@@ -109,6 +111,9 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
           {tableBoard}
         </tbody>
       </table>
+      <div className="Board-score">
+        <p>Number of Moves: <b>{count}</b></p>
+      </div>
     </div>
   );
 }
